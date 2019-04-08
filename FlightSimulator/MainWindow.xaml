@@ -1,0 +1,54 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlightSimulator"
+        xmlns:Views="clr-namespace:FlightSimulator.Views" x:Class="FlightSimulator.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Grid.Column="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Column="0">
+
+
+            <Grid DockPanel.Dock="Top" Margin="0,0,0,10" >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Content="Button1" Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" HorizontalContentAlignment="Center" />
+                <Button Content="Button2" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="75"/>
+
+            </Grid>
+
+            <Views:FlightBoard HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+
+
+
+        </DockPanel>
+
+        <TabControl Grid.Column="1" HorizontalAlignment="Right" Height="auto" VerticalAlignment="Top" Width="auto">
+            <TabItem Header="Manual">
+                <Views:Joystick />
+            </TabItem>
+            <TabItem Header="Auto Pilot">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+
+
+
+
+
+
+
+    </Grid>
+</Window>
