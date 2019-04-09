@@ -21,11 +21,12 @@ namespace FlightSimulator
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.DataContext = new ViewModels.MainWindowVM();
         }
 
         private void FlightBoard_Loaded(object sender, RoutedEventArgs e)
         {
+
 
         }
 
@@ -33,5 +34,11 @@ namespace FlightSimulator
         {
 
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // on close button close connection
+        }
+
     }
 }

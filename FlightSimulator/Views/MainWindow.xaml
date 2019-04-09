@@ -7,7 +7,7 @@
         xmlns:Views="clr-namespace:FlightSimulator.Views" x:Class="FlightSimulator.MainWindow"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="FlightSimulator" AllowsTransparency="True" Height="450" Width="950">
+        Title="FlightSimulator" AllowsTransparency="True" Height="450" Width="950" Closing="Window_Closing">
     <Grid Grid.Column="0" Margin="0,-2,0.333,1.667">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -25,8 +25,8 @@
                     <ColumnDefinition Width="180*" />
                 </Grid.ColumnDefinitions>
 
-                <Button Content="connect" Grid.Column="0"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" HorizontalContentAlignment="Center" Height="20" Margin="0,0,1.667,0" />
-                <Button Content="settings" Grid.Column="2"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height="20" Margin="3.333,0,0,0"/>
+                <Views:ConnectButton></Views:ConnectButton>
+                <Views:SettingsButton Grid.Column ="2" />
 
             </Grid>
 
