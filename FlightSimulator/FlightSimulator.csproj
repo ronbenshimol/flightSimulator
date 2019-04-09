@@ -80,8 +80,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\slider.xaml.cs">
-      <DependentUpon>slider.xaml</DependentUpon>
+    <Compile Include="Views\HorizantalSlider.xaml.cs">
+      <DependentUpon>HorizantalSlider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VerticalSlider.xaml.cs">
+      <DependentUpon>VerticalSlider.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
@@ -95,7 +98,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\slider.xaml">
+    <Page Include="Views\HorizantalSlider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VerticalSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
