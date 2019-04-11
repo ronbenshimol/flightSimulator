@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulator.ViewModels.ButtonsVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,24 +19,12 @@ namespace FlightSimulator.Views
     /// <summary>
     /// Interaction logic for ConnectButtonxaml.xaml
     /// </summary>
-    public partial class ConnectButton : UserControl, ICommand
+    public partial class ConnectButton : UserControl
     {
         public ConnectButton()
         {
             InitializeComponent();
-        }
-
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
-        {
-            //TODO connect in model
-            throw new NotImplementedException();
+            this.DataContext = new ConnectButtonVM();
         }
     }
 }

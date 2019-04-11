@@ -7,7 +7,7 @@
         xmlns:Views="clr-namespace:FlightSimulator.Views" x:Class="FlightSimulator.MainWindow"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="FlightSimulator" AllowsTransparency="True" Height="450" Width="950" Closing="Window_Closing">
+        Title="FlightSimulator" Height="450" Width="950" Closing="Window_Closing">
     <Grid Grid.Column="0" Margin="0,-2,0.333,1.667">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

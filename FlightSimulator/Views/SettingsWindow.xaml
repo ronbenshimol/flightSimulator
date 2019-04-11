@@ -18,12 +18,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Padding="3" Margin="3">Flight Server IP:</TextBlock>
-        <TextBox x:Name="ServerIP" Grid.Column="2" Padding="3" Margin="3"></TextBox>
+        <TextBox x:Name="ServerIP" Text="{Binding FlightServer}" Grid.Column="2" Padding="3" Margin="3"></TextBox>
         <TextBlock Grid.Row="1" Padding="3" Margin="3">Flight Info Port:</TextBlock>
-        <TextBox x:Name="ServerPort" Grid.Row="1" Grid.Column="2" Padding="3"
-            Margin="3" TextChanged="txtRows_TextChanged"></TextBox>
+        <TextBox x:Name="ServerPort" Text="{Binding FlightInfoPort}" Grid.Row="1" Grid.Column="2" Padding="3"
+            Margin="3"></TextBox>
         <TextBlock Grid.Row="2" Padding="3" Margin="3">Flight Command Port:</TextBlock>
-        <TextBox x:Name="ClietPort" Grid.Row="2" Grid.Column="2" Padding="3"
+        <TextBox x:Name="ClietPort" Text="{Binding FlightCommandPort}" Grid.Row="2" Grid.Column="2" Padding="3"
             Margin="3"></TextBox>
         <Button Command="{Binding OKCommand}" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right"
             Grid.ColumnSpan="1" Margin="0,6,21.333,4" Padding="5" Width="43">OK</Button>
