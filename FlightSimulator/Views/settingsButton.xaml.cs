@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulator.ViewModels.ButtonsVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,24 +19,12 @@ namespace FlightSimulator.Views
     /// <summary>
     /// Interaction logic for SettingsButton.xaml
     /// </summary>
-    public partial class SettingsButton : UserControl, ICommand
+    public partial class SettingsButton : UserControl
     {
         public SettingsButton()
         {
             InitializeComponent();
-        }
-
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
-        {
-            // open settings window
-            throw new NotImplementedException();
+            this.DataContext = new SettingsButtonVM(); 
         }
     }
 }

@@ -27,9 +27,5 @@ namespace FlightSimulator.Views
             this.DataContext = new SettingsWindowViewModel(new ApplicationSettingsModel());
         }
 
-        private void ServerIP_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
     }
 }

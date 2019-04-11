@@ -40,5 +40,9 @@ namespace FlightSimulator
             // on close button close connection
         }
 
+        private void Joystick_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

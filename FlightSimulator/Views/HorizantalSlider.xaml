@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         
         <StackPanel VerticalAlignment="Center" Margin="5,-8,7.333,-8" Height="30">
-            <Slider x:Name="rudderSlider" Grid.Column="0" Minimum="-1" Maximum="1" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Height="27" Margin="0,0,0.333,0"/>
+            <Slider x:Name="rudderSlider" Value="{Binding Rudder}" Grid.Column="0" Minimum="-1" Maximum="1" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Height="27" Margin="0,0,0.333,0"/>
         </StackPanel>
         <TextBox Text="{Binding Value, ElementName=rudderSlider, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" TextAlignment="Right" Width="40" Margin="0,0" />
     </Grid>

@@ -60,8 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\ConncetModel.cs" />
+    <Compile Include="Model\ConnectModel.cs" />
     <Compile Include="ViewModels\ButtonsVM\ConnectButtonVM.cs" />
+    <Compile Include="ViewModels\ButtonsVM\SettingsButtonVM.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
     <Compile Include="Views\ConnectButtonx.xaml.cs">
       <DependentUpon>ConnectButtonx.xaml</DependentUpon>

@@ -23,6 +23,7 @@ namespace FlightSimulator.Views
         public VerticalSlider()
         {
             InitializeComponent();
+            
         }
     }
 }

@@ -63,12 +63,12 @@ namespace FlightSimulator.ViewModels.Windows
 
         #region Commands
         #region ClickCommand
-        private ICommand _clickCommand;
-        public ICommand ClickCommand
+        private ICommand _okCommand;
+        public ICommand OKCommand
         {
             get
             {
-                return _clickCommand ?? (_clickCommand = new CommandHandler(() => OnClick()));
+                return _okCommand ?? (_okCommand = new CommandHandler(() => OnClick()));
             }
         }
         private void OnClick()
