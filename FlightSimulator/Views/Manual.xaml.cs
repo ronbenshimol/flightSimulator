@@ -10,29 +10,30 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FlightSimulator
+namespace FlightSimulator.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Manual.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Manual : UserControl
     {
-        public MainWindow()
+        public Manual()
         {
-            this.DataContext = new ViewModels.MainWindowVM();
+            InitializeComponent();
         }
 
-        
-
-        
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void VerticalSlider_Loaded(object sender, RoutedEventArgs e)
         {
-            // on close button close connection
+
         }
 
-        
+        private void Joystick_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

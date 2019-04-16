@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="FlightSimulator.Views.Manual"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightSimulator.Views"
+             xmlns:Views="clr-namespace:FlightSimulator.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" >
+    <!--<Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="40" />
+
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="20" />
+
+        </Grid.RowDefinitions>
+
+
+
+        <TextBlock Grid.Column="0" Grid.Row="0" FontStyle="Italic" FontWeight="Bold" TextAlignment="Center" FontSize="12" TextWrapping="Wrap" Margin="10,79,22,-29.333" Grid.RowSpan="3">↑ throttle ↓</TextBlock>
+
+        <Views:VerticalSlider Grid.Row="0" Margin="23,55,364.333,86.667" Loaded="VerticalSlider_Loaded" Grid.ColumnSpan="2" />
+
+        <Views:Joystick Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top"  Loaded="Joystick_Loaded" />
+
+        <TextBlock Grid.Column="3" Grid.Row="0" FontStyle="Italic" FontWeight="Bold" TextAlignment="Center" FontSize="12" TextWrapping="Wrap" Margin="10,79,22,-29.333" Grid.RowSpan="3">↑ elevator ↓</TextBlock>
+        
+        <Views:slider Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="38,10.333,32.333,9.667" Grid.RowSpan="2" Width="321" ></Views:slider>
+
+        <TextBlock Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Margin="166,0.333,161.333,-0.333" Width="64"> ← rudder →</TextBlock>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Margin="166,5,161.333,345.667" Width="64"> ← aileron →</TextBlock>
+
+        <TextBox Text="{Binding Value, ElementName=elevatorValue, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" TextAlignment="Center" FontSize="12" TextWrapping="Wrap" Width="40" Height="30" Margin="391,25,0.333,315.667" Grid.ColumnSpan="2" />
+        <TextBox Text="{Binding Value, ElementName=aileronValue, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" TextAlignment="Center" FontSize="12" TextWrapping="Wrap" Width="40" Margin="330,0,21.333,343.667" />
+
+    </Grid>-->
+
+
+    <DockPanel>
+        <DockPanel.Resources>
+            <Style x:Key="VerticalLabel" TargetType="Label">
+                <Setter Property="LayoutTransform">
+                    <Setter.Value>
+                        <TransformGroup>
+                            <RotateTransform Angle="270" />
+                            <ScaleTransform ScaleX="-1" ScaleY="-1"/>
+                        </TransformGroup>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Slider">
+                <Setter Property="Minimum" Value="-1"/>
+                <Setter Property="Maximum" Value="1"/>
+            </Style>
+        </DockPanel.Resources>
+
+        <Label VerticalAlignment="Center" Content=" ← throttle  → " Style="{StaticResource VerticalLabel}" DockPanel.Dock="Left"/>
+
+        <Grid DockPanel.Dock="Left">
+            <Label Content="0" Margin="25,50,0,0"/>
+            <Slider  Orientation="Vertical" Height="300" Value="{Binding Throttle, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+
+        <Label DockPanel.Dock="Right" VerticalAlignment="Center" Content=" ← elevator → " Style="{StaticResource VerticalLabel}" />
+
+        <Label DockPanel.Dock="Bottom" HorizontalAlignment="Center" Content=" ← rudder → " />
+
+        <DockPanel DockPanel.Dock="Top">
+            <Label Content="{Binding flightSimulator.Aileron}" DockPanel.Dock="Right"/>
+            <Label HorizontalAlignment="Center" Content=" ← aileron → " DockPanel.Dock="Top"/>
+        </DockPanel>
+        
+        
+
+        <Grid DockPanel.Dock="Bottom">
+
+            <Slider Width="300" Value="{Binding Rudder, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label HorizontalAlignment="Right" Content="0" Margin="25,0,0,0"/>
+
+        </Grid>
+
+        <local:Joystick Aileron="{Binding Aileron, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" 
+                        Elevator="{Binding Elevator, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+    </DockPanel>
+
+
+
+</UserControl>

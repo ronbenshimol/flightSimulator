@@ -63,6 +63,7 @@
     <Compile Include="Model\ConnectModel.cs" />
     <Compile Include="ViewModels\ButtonsVM\ConnectButtonVM.cs" />
     <Compile Include="ViewModels\ButtonsVM\SettingsButtonVM.cs" />
+    <Compile Include="ViewModels\FlightVM.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
     <Compile Include="Views\ConnectButtonx.xaml.cs">
       <DependentUpon>ConnectButtonx.xaml</DependentUpon>
@@ -77,6 +78,9 @@
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />
     <Compile Include="ViewModels\Windows\SettingsWindowViewModel.cs" />
+    <Compile Include="Views\Flight.xaml.cs">
+      <DependentUpon>Flight.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FlightBoard.xaml.cs">
       <DependentUpon>FlightBoard.xaml</DependentUpon>
     </Compile>
@@ -89,6 +93,9 @@
     </Compile>
     <Compile Include="Views\HorizantalSlider.xaml.cs">
       <DependentUpon>HorizantalSlider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manual.xaml.cs">
+      <DependentUpon>Manual.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsButton.xaml.cs">
       <DependentUpon>SettingsButton.xaml</DependentUpon>
@@ -107,6 +114,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Flight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\FlightBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HorizantalSlider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manual.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

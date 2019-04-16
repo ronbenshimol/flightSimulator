@@ -7,82 +7,24 @@
         xmlns:Views="clr-namespace:FlightSimulator.Views" x:Class="FlightSimulator.MainWindow"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="FlightSimulator" Height="450" Width="950" Closing="Window_Closing">
+        Title="FlightSimulator" Height="485" Width="950" Closing="Window_Closing">
     <Grid Grid.Column="0" Margin="0,-2,0.333,1.667">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <DockPanel Grid.Column="0">
+        <Views:Flight Grid.Column="0"></Views:Flight>
 
+        <TabControl Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="0,5,7.333,0">
 
-            <Grid DockPanel.Dock="Top" Margin="0,0,0,10" >
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="180*" />
-                    <ColumnDefinition Width="38*" />
-                    <ColumnDefinition Width="180*" />
-                </Grid.ColumnDefinitions>
-
-                <Views:ConnectButton></Views:ConnectButton>
-                <Views:SettingsButton Grid.Column ="2" />
-
-            </Grid>
-
-            <Views:FlightBoard HorizontalAlignment="Left"  VerticalAlignment="Top" Loaded="FlightBoard_Loaded"/>
-
-        </DockPanel>
-
-        <Grid Grid.Column="1">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="40" />
-
-
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="30" />
-                <RowDefinition Height="20" />
-
-            </Grid.RowDefinitions>
-
-
-
-            <TextBlock Grid.Column="0" Grid.Row="0" FontStyle="Italic" FontWeight="Bold" TextAlignment="Center" FontSize="12" TextWrapping="Wrap" Margin="10,79,22,-29.333" Grid.RowSpan="3">↑ throttle ↓</TextBlock>
-
-            <Views:VerticalSlider Grid.Row="0" Margin="23,55,364.333,86.667" Loaded="VerticalSlider_Loaded" Grid.ColumnSpan="2" />
-
-            <TabControl Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Height="361" VerticalAlignment="Top" Width="346" Margin="0,5,7.333,0">
-
-                <TabItem Header="Manual">
-                    <Views:Joystick Margin="0,0,0,-4.667" Loaded="Joystick_Loaded" />
-                </TabItem>
-                <TabItem Header="Auto Pilot">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-            </TabControl>
-
-            <TextBlock  Grid.Column="3" Grid.Row="0"></TextBlock>
-            <TextBlock Grid.Column="3" Grid.Row="0" FontStyle="Italic" FontWeight="Bold" TextAlignment="Center" FontSize="12" TextWrapping="Wrap" Margin="10,79,22,-29.333" Grid.RowSpan="3">↑ elevator ↓</TextBlock>
-
-            <Views:slider Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="38,10.333,32.333,9.667" Grid.RowSpan="2" Width="321" ></Views:slider>
-
-            <TextBlock Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Margin="166,0.333,161.333,-0.333" Width="64"> ← rudder →</TextBlock>
-            <TextBlock Grid.Column="1" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Margin="166,5,161.333,345.667" Width="64"> ← aileron →</TextBlock>
-
-            <TextBox Text="{Binding Value, ElementName=elevatorValue, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" TextAlignment="Center" FontSize="12" TextWrapping="Wrap" Width="40" Height="30" Margin="391,25,0.333,315.667" Grid.ColumnSpan="2" />
-            <TextBox Text="{Binding Value, ElementName=aileronValue, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" TextAlignment="Center" FontSize="12" TextWrapping="Wrap" Width="40" Margin="330,0,21.333,343.667" />
-
-        </Grid>
-
-
-
-
+            <TabItem Header="Manual">
+                <Views:Manual Grid.Column="1"></Views:Manual>
+            </TabItem>
+            <TabItem Header="Auto Pilot">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
 
 
     </Grid>
