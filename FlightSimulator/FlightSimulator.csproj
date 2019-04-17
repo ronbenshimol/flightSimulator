@@ -61,6 +61,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\ConnectModel.cs" />
+    <Compile Include="Model\InfoServer.cs" />
     <Compile Include="ViewModels\ButtonsVM\ConnectButtonVM.cs" />
     <Compile Include="ViewModels\ButtonsVM\SettingsButtonVM.cs" />
     <Compile Include="ViewModels\FlightVM.cs" />
