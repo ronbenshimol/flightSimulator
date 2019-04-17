@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,16 +24,7 @@ namespace FlightSimulator.Views
         public Manual()
         {
             InitializeComponent();
-        }
-
-        private void VerticalSlider_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Joystick_Loaded(object sender, RoutedEventArgs e)
-        {
-
+            this.DataContext = new ManualVM();
         }
 
     }

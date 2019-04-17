@@ -66,8 +66,8 @@
         <Label VerticalAlignment="Center" Content=" ← throttle  → " Style="{StaticResource VerticalLabel}" DockPanel.Dock="Left"/>
 
         <Grid DockPanel.Dock="Left">
-            <Label Content="0" Margin="25,50,0,0"/>
-            <Slider  Orientation="Vertical" Height="300" Value="{Binding Throttle, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="{Binding Path=Throttle}" Margin="25,50,0,0"/>
+            <Slider Orientation="Vertical" Height="300" Value="{Binding Throttle, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
 
         <Label DockPanel.Dock="Right" VerticalAlignment="Center" Content=" ← elevator → " Style="{StaticResource VerticalLabel}" />
@@ -84,7 +84,7 @@
         <Grid DockPanel.Dock="Bottom">
 
             <Slider Width="300" Value="{Binding Rudder, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label HorizontalAlignment="Right" Content="0" Margin="25,0,0,0"/>
+            <Label HorizontalAlignment="Right" Content="{Binding Path=Rudder}" Margin="25,0,0,0"/>
 
         </Grid>
 
