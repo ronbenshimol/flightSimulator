@@ -139,8 +139,6 @@ namespace FlightSimulator.Views
             ///!!!!!!!!!!!!!!
             if (!Knob.IsMouseCaptured) return;
 
-            Console.WriteLine("wow");
-
             Point newPos = e.GetPosition(Base);
 
             Point deltaPos = new Point(newPos.X - _startPos.X, newPos.Y - _startPos.Y);
