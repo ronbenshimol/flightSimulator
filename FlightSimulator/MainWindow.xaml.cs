@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulator.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,9 @@ namespace FlightSimulator
         public MainWindow()
         {
             this.DataContext = new ViewModels.MainWindowVM();
+
+            InfoServer server = InfoServer.Instence;
+            server.start();
         }
 
         
