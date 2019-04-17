@@ -25,6 +25,8 @@ namespace FlightSimulator.Views
         {
             InitializeComponent();
             this.DataContext = new ManualVM();
+
+            // לחלק ב 124 
         }
 
     }
