@@ -11,12 +11,14 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model
 {
-    class InfoServer :BaseNotify, IDisposable
+    public class InfoServer : BaseNotify, IDisposable
     {
         
-        private TcpClient client;
+        TcpClient client;
         TcpListener listener;
         object _syncLock = new object();
+        bool isAlive;
+        Thread serverLitenerThread;
 
         private float lat;
         public float Lat { get { return lat; } set { lat = value; NotifyPropertyChanged("Lat"); } }
@@ -24,14 +26,12 @@ namespace FlightSimulator.Model
         private float lon;
         public float Lon { get { return lon; } set { lon = value; NotifyPropertyChanged("Lon"); } }
 
-
         private InfoServer()
         {
-
         }
 
         private static InfoServer instance = null;
-        public static InfoServer Instence
+        public static InfoServer Instance
         {
             get
             {
@@ -42,10 +42,10 @@ namespace FlightSimulator.Model
         }
 
 
-        public void start()
+        public void Start()
         {
             int listenPort = ApplicationSettingsModel.Instance.FlightInfoPort;
-            string serverIp = ApplicationSettingsModel.Instance.FlightServerIP;
+            string serverIp = "127.0.0.1";
             IPAddress localAdd = IPAddress.Parse(serverIp);
 
             listener = new TcpListener(localAdd, listenPort);
@@ -54,33 +54,59 @@ namespace FlightSimulator.Model
 
             client = listener.AcceptTcpClient();
 
+            isAlive = true;
+
             Console.WriteLine("client connected!");
             
-            Thread serverLitenerThread = new Thread(() =>
+            serverLitenerThread = new Thread(() =>
             {
-
-                using (StreamReader reader = new StreamReader(client.GetStream(), Encoding.UTF8))
+                try
                 {
-                    lock(_syncLock)
+                    using (StreamReader reader = new StreamReader(client.GetStream(), Encoding.UTF8))
                     {
-                        
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
+                        lock (_syncLock)
                         {
-                            Console.WriteLine("server: " + line);
+
+                            string line;
+                            while (isAlive && (line = reader.ReadLine()) != null)
+                            {
+                                //Console.WriteLine("server: " + line);
+
+                                string[] valuesStr = line.Split(',');
+                                if(valuesStr.Length > 23)
+                                //Console.Clear();
+                                Console.WriteLine("aileron: " + valuesStr[19] + " ,elevator: " + valuesStr[20] +
+                                                    " ,rudder: " + valuesStr[21] + " ,throttle: " + valuesStr[23]);
+
+                                Lon = float.Parse(valuesStr[0]);
+                                Lat = float.Parse(valuesStr[1]);
+
+                                reader.DiscardBufferedData();
+                            }
                         }
                     }
                 }
+                catch (Exception ex)
+                {
 
+                }
 
             });
 
             serverLitenerThread.Start();
         }
 
+        public void Close()
+        {
+            client?.Close();
+            isAlive = false;
+            serverLitenerThread?.Join();
+        }
+
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Close();
+            
         }
     }
 }
