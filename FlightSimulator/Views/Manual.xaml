@@ -67,7 +67,7 @@
 
         <Grid DockPanel.Dock="Left">
             <Label Content="{Binding Path=Throttle}" Margin="25,50,0,0"/>
-            <Slider Orientation="Vertical" Height="300" Value="{Binding Throttle, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+            <Slider Orientation="Vertical" Height="300" Minimum="0" Value="{Binding Throttle, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
 
         <Label DockPanel.Dock="Right" VerticalAlignment="Center" Content=" ← elevator → " Style="{StaticResource VerticalLabel}" />
