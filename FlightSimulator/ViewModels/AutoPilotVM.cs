@@ -3,13 +3,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+using System.Windows.Media;
+
+
 namespace FlightSimulator.ViewModels
 {
-    class AutoPilotVM
+    class AutoPilotVM : BaseNotify
     {
+        public AutoPilotVM()
+        {
+            Back = Brushes.White;
+        }
+        private String addedStr;
+        private String prevStr = "";
+
         private String autoPilotStr;
         public String AutoPilotStr
         {
@@ -19,11 +30,22 @@ namespace FlightSimulator.ViewModels
             }
             set
             {
-                Console.WriteLine(value);
                 this.autoPilotStr = value;
+                if (value.CompareTo("") != 0)
+                    Back = Brushes.LightPink;
             }
         }
-        
+
+        private Brush _b;
+        public Brush Back
+        {
+            get { return _b; }
+            set { _b = value; NotifyPropertyChanged("Back"); }
+        }
+
+
+
+
 
         private ICommand _okCommand;
         public ICommand OKCommand
@@ -37,7 +59,31 @@ namespace FlightSimulator.ViewModels
         private void OnOKClick()
         {
             Console.WriteLine("clicked on ok");
-            
+            new Thread(() =>
+            {
+                addedStr = removePrefix(AutoPilotStr, prevStr);
+                //Console.WriteLine();
+                IEnumerable<string> commands = addedStr.Split('\n').Select(command => command.Trim())
+                    .Where(command => command.Count() > 0);
+                
+                foreach (var command in commands)
+                {
+                    CommandClient.Instance.Send(command);
+                    Console.WriteLine("message: " + command);
+                }
+                addedStr = "";
+                Back = Brushes.White;
+                prevStr = AutoPilotStr;
+            }).Start();
+        }
+        private String removePrefix(String str, String prefix)
+        {
+            String final = "";
+            if (str.StartsWith(prefix))
+            {
+                final = str.Substring(prefix.Length);
+            }
+            return final;
         }
 
         private ICommand _clearCommand;
