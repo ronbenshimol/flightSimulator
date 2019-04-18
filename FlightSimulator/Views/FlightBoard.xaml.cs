@@ -28,7 +28,10 @@ namespace FlightSimulator.Views
         //public FlightBoardViewModel FlightBoardVM { get; set; }
         public InfoServer infoServer { get; set; }
 
-        ObservableDataSource<Point> planeLocations = null;
+        private readonly ObservableDataSource<Point> planeLocations = new ObservableDataSource<Point>();
+        public ObservableDataSource<Point> PlaneLocations => planeLocations;
+
+        //ObservableDataSource<Point> planeLocations = null;
         public FlightBoard()
         {
             InitializeComponent();
@@ -38,14 +41,13 @@ namespace FlightSimulator.Views
 
             infoServer = InfoServer.Instance;
             infoServer.PropertyChanged += Vm_PropertyChanged;
-            this.DataContext = infoServer;
+            //this.DataContext = infoServer;
 
         }
         
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            planeLocations = new ObservableDataSource<Point>();
             // Set identity mapping of point in collection to point on plot
             planeLocations.SetXYMapping(p => p);
 
@@ -56,15 +58,64 @@ namespace FlightSimulator.Views
         {
             if(e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
             {
-                //Point p1 = new Point(FlightBoardVM.Lon,FlightBoardVM.Lat);            // Fill here!
-                //planeLocations.AppendAsync(Dispatcher, p1);
+                Console.WriteLine("Lon: " + infoServer.Lon + " ,Lat: " + infoServer.Lat);
 
                 Point p1 = new Point(infoServer.Lon, infoServer.Lat);            // Fill here!
-                planeLocations.AppendAsync(Dispatcher, p1);
+                planeLocations.AppendAsync(Application.Current.Dispatcher, p1);
             }
         }
 
     }
 
 }
+
+
+
+
+//namespace FlightSimulator.ViewModels
+//{
+//    public class FlightBoardViewModel
+//    {
+//        private readonly ObservableDataSource<Point> planeLocations = new ObservableDataSource<Point>();
+//        public ObservableDataSource<Point> PlaneLocations => planeLocations;
+//        public ObservableCollection<Point> lst;
+
+//        public FlightSimulatorService service { get; set; }
+
+//        public FlightBoardViewModel()
+//        {
+//            service = FlightSimulatorService.Instence;
+//            planeLocations.SetXYMapping(p => p);
+//            service.PropertyChanged += Vm_PropertyChanged;
+        
+//        }
+
+//        private void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)
+//        {
+//            if (e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
+//            {
+//                Point p1 = new Point(service.Lon, service.Lat);
+//                planeLocations.AppendAsync(Application.Current.Dispatcher, p1);
+//            }
+
+//        }
+
+//        //    private void RunTest()
+//        //    {
+//        //        Func<double, double> func = val => -(val * val);
+//        //        double x = 0;
+//        //        while (true)
+//        //        {
+//        //            x += 0.2;
+//        //            AddNewPoint(new Point(service.Lon, service.Lat));
+//        //            Thread.Sleep(100);
+//        //        }
+//        //    }
+
+//        //    private void AddNewPoint(Point p)
+//        //    {
+//        //        PlaneLocations.AppendAsync(Application.Current.Dispatcher, p);
+//        //    }
+//    }
+//}
 

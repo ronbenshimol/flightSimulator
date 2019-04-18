@@ -29,7 +29,7 @@ namespace FlightSimulator.ViewModels
         {
             isDisconnected = false;
 
-            new Thread(() =>
+             new Thread(() =>
             {
                 //init communication
                 InfoServer server = InfoServer.Instance;

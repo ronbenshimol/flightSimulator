@@ -17,6 +17,7 @@ namespace FlightSimulator.Model
         TcpClient client;
         TcpListener listener;
         object _syncLock = new object();
+        object _syncLock2 = new object();
         bool isAlive;
         Thread serverLitenerThread;
 
@@ -75,9 +76,9 @@ namespace FlightSimulator.Model
                                 string[] valuesStr = line.Split(',');
                                 if(valuesStr.Length > 23)
                                 //Console.Clear();
-                                Console.WriteLine("Lon: " + valuesStr[0] + " ,Lat: "+ valuesStr[1] +
-                                                    " ,aileron: " + valuesStr[19] + " ,elevator: " + valuesStr[20] +
-                                                    " ,rudder: " + valuesStr[21] + " ,throttle: " + valuesStr[23]);
+                                //Console.WriteLine("Lon: " + valuesStr[0] + " ,Lat: "+ valuesStr[1] +
+                                //                    " ,aileron: " + valuesStr[19] + " ,elevator: " + valuesStr[20] +
+                                //                    " ,rudder: " + valuesStr[21] + " ,throttle: " + valuesStr[23]);
 
                                 Lon = float.Parse(valuesStr[0]);
                                 Lat = float.Parse(valuesStr[1]);
@@ -95,21 +96,21 @@ namespace FlightSimulator.Model
             });
 
             serverLitenerThread.Start();
+
         }
 
         public void Close()
         {
-            lock (_syncLock) { 
-            client?.Close();
-            isAlive = false;
-            serverLitenerThread?.Join();
+            lock (_syncLock2)
+            {
+                client?.Close();
+                isAlive = false;
             }
         }
 
         public void Dispose()
         {
             Close();
-            
         }
     }
 }
