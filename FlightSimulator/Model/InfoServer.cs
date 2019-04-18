@@ -45,7 +45,7 @@ namespace FlightSimulator.Model
         public void Start()
         {
             int listenPort = ApplicationSettingsModel.Instance.FlightInfoPort;
-            string serverIp = "127.0.0.1";
+            string serverIp = "0.0.0.0";
             IPAddress localAdd = IPAddress.Parse(serverIp);
 
             listener = new TcpListener(localAdd, listenPort);
@@ -75,7 +75,8 @@ namespace FlightSimulator.Model
                                 string[] valuesStr = line.Split(',');
                                 if(valuesStr.Length > 23)
                                 //Console.Clear();
-                                Console.WriteLine("aileron: " + valuesStr[19] + " ,elevator: " + valuesStr[20] +
+                                Console.WriteLine("Lon: " + valuesStr[0] + " ,Lat: "+ valuesStr[1] +
+                                                    " ,aileron: " + valuesStr[19] + " ,elevator: " + valuesStr[20] +
                                                     " ,rudder: " + valuesStr[21] + " ,throttle: " + valuesStr[23]);
 
                                 Lon = float.Parse(valuesStr[0]);
@@ -98,9 +99,11 @@ namespace FlightSimulator.Model
 
         public void Close()
         {
+            lock (_syncLock) { 
             client?.Close();
             isAlive = false;
             serverLitenerThread?.Join();
+            }
         }
 
         public void Dispose()

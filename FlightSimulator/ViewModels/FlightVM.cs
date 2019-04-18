@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -26,16 +27,18 @@ namespace FlightSimulator.ViewModels
         }
         private void OnConnectClick()
         {
-            // TODO call to connect in model
-            //m_flightManager.Connect();
-            //connectM.printConnect();
             isDisconnected = false;
 
-            //init communication
-            InfoServer server = InfoServer.Instance;
-            server.Start();
-            CommandClient commandClient = CommandClient.Instance;
-            commandClient.Start();
+            new Thread(() =>
+            {
+                //init communication
+                InfoServer server = InfoServer.Instance;
+                server.Start();
+                CommandClient commandClient = CommandClient.Instance;
+                commandClient.Start();
+
+            }).Start();
+            
         }
 
 
