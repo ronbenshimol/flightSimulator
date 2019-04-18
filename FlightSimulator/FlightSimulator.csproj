@@ -60,6 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\CommandClient.cs" />
     <Compile Include="Model\ConnectModel.cs" />
     <Compile Include="Model\InfoServer.cs" />
     <Compile Include="ViewModels\AutoPilotVM.cs" />

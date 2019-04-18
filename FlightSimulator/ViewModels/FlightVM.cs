@@ -28,8 +28,14 @@ namespace FlightSimulator.ViewModels
         {
             // TODO call to connect in model
             //m_flightManager.Connect();
-            connectM.printConnect();
+            //connectM.printConnect();
             isDisconnected = false;
+
+            //init communication
+            InfoServer server = InfoServer.Instance;
+            server.Start();
+            CommandClient commandClient = CommandClient.Instance;
+            commandClient.Start();
         }
 
 

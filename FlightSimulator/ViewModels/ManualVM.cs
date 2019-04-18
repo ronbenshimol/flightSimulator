@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulator.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,12 @@ namespace FlightSimulator.ViewModels
 {
     class ManualVM : BaseNotify
     {
+
+        CommandClient commandClient;
+        public ManualVM()
+        {
+
+        }
 
         private double aileron = 0;
         public double Aileron
@@ -21,6 +28,10 @@ namespace FlightSimulator.ViewModels
                 aileron = Math.Round(value, 2);
                 Console.WriteLine("Aileron = " + Aileron + "   Throttle = " + Throttle + "   Elevator = " + Elevator + "  Rudder = " + Rudder);
                 NotifyPropertyChanged("Aileron");
+
+                string aileronCommnad = "set /controls/flight/aileron " + aileron;
+                CommandClient.Instance.Send(aileronCommnad);
+
             }
         }
 
@@ -36,6 +47,9 @@ namespace FlightSimulator.ViewModels
                 throttle = Math.Round(value, 2);
                 Console.WriteLine("Aileron = " + Aileron + "   Throttle = " + Throttle + "   Elevator = " + Elevator + "  Rudder = " + Rudder);
                 NotifyPropertyChanged("Throttle");
+
+                string throttleCommnad = "set /controls/engines/current-engine/throttle " + throttle;
+                CommandClient.Instance.Send(throttleCommnad);
             }
         }
 
@@ -51,6 +65,9 @@ namespace FlightSimulator.ViewModels
                 elevator = Math.Round(value, 2);
                 Console.WriteLine("Aileron = " + Aileron + "   Throttle = " + Throttle + "   Elevator = " + Elevator + "  Rudder = " + Rudder);
                 NotifyPropertyChanged("Elevator");
+
+                string elevatorCommnad = "set /controls/flight/elevator " + elevator;
+                CommandClient.Instance.Send(elevatorCommnad);
             }
         }
 
@@ -66,6 +83,9 @@ namespace FlightSimulator.ViewModels
                 rudder = Math.Round(value, 2);
                 Console.WriteLine("Aileron = " + Aileron + "   Throttle = " + Throttle + "   Elevator = " + Elevator + "  Rudder = " + Rudder);
                 NotifyPropertyChanged("Rudder");
+
+                string rudderCommnad = "set /controls/flight/rudder " + rudder;
+                CommandClient.Instance.Send(rudderCommnad);
             }
         }
 

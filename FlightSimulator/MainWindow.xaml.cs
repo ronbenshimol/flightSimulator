@@ -24,8 +24,6 @@ namespace FlightSimulator
         {
             this.DataContext = new ViewModels.MainWindowVM();
 
-            InfoServer server = InfoServer.Instence;
-            server.start();
         }
 
         
@@ -34,7 +32,7 @@ namespace FlightSimulator
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            // on close button close connection
+            InfoServer.Instance.Close();
         }
 
         
