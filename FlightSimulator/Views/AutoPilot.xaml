@@ -11,7 +11,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="AutoPilotBox" Background="{Binding Back}" Text="{Binding AutoPilotStr, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0"
+        <TextBox x:Name="AutoPilotBox" Background="{Binding Back}" Text="{Binding AutoPilotStr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0"
                  AcceptsReturn="True" TextWrapping="Wrap" AcceptsTab="True"/>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
             <Button Content="OK" Command="{Binding OKCommand}" Margin="10"/>

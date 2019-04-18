@@ -33,6 +33,7 @@ namespace FlightSimulator.ViewModels
                 this.autoPilotStr = value;
                 if (value.CompareTo("") != 0)
                     Back = Brushes.LightPink;
+                NotifyPropertyChanged(AutoPilotStr);
             }
         }
 
@@ -98,7 +99,9 @@ namespace FlightSimulator.ViewModels
         private void OnClearClick()
         {
             Console.WriteLine("clicked on clear");
-
+            this.AutoPilotStr = "";
+            this.prevStr = "";
+            
         }
 
 
