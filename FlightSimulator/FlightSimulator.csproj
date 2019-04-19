@@ -64,16 +64,11 @@
     <Compile Include="Model\ConnectModel.cs" />
     <Compile Include="Model\InfoServer.cs" />
     <Compile Include="ViewModels\AutoPilotVM.cs" />
-    <Compile Include="ViewModels\ButtonsVM\ConnectButtonVM.cs" />
-    <Compile Include="ViewModels\ButtonsVM\SettingsButtonVM.cs" />
     <Compile Include="ViewModels\FlightVM.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
     <Compile Include="ViewModels\ManualVM.cs" />
     <Compile Include="Views\AutoPilot.xaml.cs">
       <DependentUpon>AutoPilot.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ConnectButtonx.xaml.cs">
-      <DependentUpon>ConnectButtonx.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -98,26 +93,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\HorizantalSlider.xaml.cs">
-      <DependentUpon>HorizantalSlider.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Manual.xaml.cs">
       <DependentUpon>Manual.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SettingsButton.xaml.cs">
-      <DependentUpon>SettingsButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\VerticalSlider.xaml.cs">
-      <DependentUpon>VerticalSlider.xaml</DependentUpon>
-    </Compile>
     <Page Include="Views\AutoPilot.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ConnectButtonx.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,23 +119,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\HorizantalSlider.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Manual.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SettingsButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\SettingsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\VerticalSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
