@@ -62,6 +62,7 @@ namespace FlightSimulator.ViewModels
             Console.WriteLine("clicked on ok");
             new Thread(() =>
             {
+                Back = Brushes.White;
                 addedStr = removePrefix(AutoPilotStr, prevStr);
                 //Console.WriteLine();
                 IEnumerable<string> commands = addedStr.Split('\n').Select(command => command.Trim())
@@ -71,9 +72,11 @@ namespace FlightSimulator.ViewModels
                 {
                     CommandClient.Instance.Send(command);
                     Console.WriteLine("message: " + command);
+                    Thread.Sleep(2000);
+                   
                 }
                 addedStr = "";
-                Back = Brushes.White;
+                
                 prevStr = AutoPilotStr;
             }).Start();
         }
