@@ -80,7 +80,7 @@ namespace FlightSimulator.ViewModels
         private String removePrefix(String str, String prefix)
         {
             String final = "";
-            if (str.StartsWith(prefix))
+            if (str != null && str.StartsWith(prefix))
             {
                 final = str.Substring(prefix.Length);
             }
