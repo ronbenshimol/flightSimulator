@@ -70,12 +70,16 @@
             <Slider Orientation="Vertical" Height="300" Minimum="0" Value="{Binding Throttle, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
 
-        <Label DockPanel.Dock="Right" VerticalAlignment="Center" Content=" ← elevator → " Style="{StaticResource VerticalLabel}" />
-
+        <DockPanel DockPanel.Dock="Right">
+            <Label Content="{Binding Elevator}" Margin="0,30,0,0" VerticalAlignment="Top" Style="{StaticResource VerticalLabel}"/>
+            <Label VerticalAlignment="Center" Content=" ← elevator → " Style="{StaticResource VerticalLabel}" />
+        </DockPanel>
+        
+        
         <Label DockPanel.Dock="Bottom" HorizontalAlignment="Center" Content=" ← rudder → " />
 
         <DockPanel DockPanel.Dock="Top">
-            <Label Content="{Binding flightSimulator.Aileron}" DockPanel.Dock="Right"/>
+            <Label Content="{Binding Aileron}" DockPanel.Dock="Right"/>
             <Label HorizontalAlignment="Center" Content=" ← aileron → " DockPanel.Dock="Top"/>
         </DockPanel>
         
