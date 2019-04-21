@@ -35,10 +35,7 @@ namespace FlightSimulator.Views
         public FlightBoard()
         {
             InitializeComponent();
-            //FlightBoardVM = new FlightBoardViewModel();
-            //FlightBoardVM.PropertyChanged += Vm_PropertyChanged;
-            //this.DataContext = FlightBoardVM;
-
+            
             infoServer = InfoServer.Instance;
             infoServer.PropertyChanged += Vm_PropertyChanged;
             //this.DataContext = infoServer;
