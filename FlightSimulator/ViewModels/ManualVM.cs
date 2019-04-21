@@ -26,7 +26,6 @@ namespace FlightSimulator.ViewModels
             set
             {
                 aileron = Math.Round(value, 2);
-                Console.WriteLine("Aileron = " + Aileron + "   Throttle = " + Throttle + "   Elevator = " + Elevator + "  Rudder = " + Rudder);
                 NotifyPropertyChanged("Aileron");
 
                 string aileronCommnad = "set /controls/flight/aileron " + aileron;
@@ -45,7 +44,6 @@ namespace FlightSimulator.ViewModels
             set
             {
                 throttle = Math.Round(value, 2);
-                Console.WriteLine("Aileron = " + Aileron + "   Throttle = " + Throttle + "   Elevator = " + Elevator + "  Rudder = " + Rudder);
                 NotifyPropertyChanged("Throttle");
 
                 string throttleCommnad = "set /controls/engines/current-engine/throttle " + throttle;
@@ -63,7 +61,6 @@ namespace FlightSimulator.ViewModels
             set
             {
                 elevator = Math.Round(value, 2);
-                Console.WriteLine("Aileron = " + Aileron + "   Throttle = " + Throttle + "   Elevator = " + Elevator + "  Rudder = " + Rudder);
                 NotifyPropertyChanged("Elevator");
 
                 string elevatorCommnad = "set /controls/flight/elevator " + elevator;
@@ -81,7 +78,6 @@ namespace FlightSimulator.ViewModels
             set
             {
                 rudder = Math.Round(value, 2);
-                Console.WriteLine("Aileron = " + Aileron + "   Throttle = " + Throttle + "   Elevator = " + Elevator + "  Rudder = " + Rudder);
                 NotifyPropertyChanged("Rudder");
 
                 string rudderCommnad = "set /controls/flight/rudder " + rudder;

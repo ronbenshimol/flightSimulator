@@ -50,15 +50,12 @@ namespace FlightSimulator.Model
             IPAddress localAdd = IPAddress.Parse(serverIp);
 
             listener = new TcpListener(localAdd, listenPort);
-            Console.WriteLine("Listening...");
             listener.Start();
 
             client = listener.AcceptTcpClient();
 
             isAlive = true;
 
-            Console.WriteLine("client connected!");
-            
             serverLitenerThread = new Thread(() =>
             {
                 try
@@ -71,15 +68,9 @@ namespace FlightSimulator.Model
                             string line;
                             while (isAlive && (line = reader.ReadLine()) != null)
                             {
-                                //Console.WriteLine("server: " + line);
-
                                 string[] valuesStr = line.Split(',');
                                 if(valuesStr.Length > 23)
-                                    //Console.Clear();
-                                    Console.WriteLine("Lon: " + valuesStr[0] + " ,Lat: " + valuesStr[1] +
-                                                        " ,aileron: " + valuesStr[19] + " ,elevator: " + valuesStr[20] +
-                                                        " ,rudder: " + valuesStr[21] + " ,throttle: " + valuesStr[23]);
-
+                                    
                                 Lon = float.Parse(valuesStr[0]);
                                 Lat = float.Parse(valuesStr[1]);
 

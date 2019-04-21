@@ -59,19 +59,16 @@ namespace FlightSimulator.ViewModels
         }
         private void OnOKClick()
         {
-            Console.WriteLine("clicked on ok");
             new Thread(() =>
             {
                 Back = Brushes.White;
                 addedStr = removePrefix(AutoPilotStr, prevStr);
-                //Console.WriteLine();
                 IEnumerable<string> commands = addedStr.Split('\n').Select(command => command.Trim())
                     .Where(command => command.Count() > 0);
                 
                 foreach (var command in commands)
                 {
                     CommandClient.Instance.Send(command);
-                    Console.WriteLine("message: " + command);
                     Thread.Sleep(2000);
                    
                 }
@@ -101,7 +98,6 @@ namespace FlightSimulator.ViewModels
         }
         private void OnClearClick()
         {
-            Console.WriteLine("clicked on clear");
             this.AutoPilotStr = "";
             this.prevStr = "";
             
