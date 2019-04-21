@@ -18,12 +18,17 @@ namespace FlightSimulator.Model
 
         public void Start()
         {
+            //init tcp socket client
             int simulatorPort = ApplicationSettingsModel.Instance.FlightCommandPort;
             string simulatorIp = ApplicationSettingsModel.Instance.FlightServerIP;
             client = new TcpClient(simulatorIp, simulatorPort);
         }
 
         private static CommandClient instance = null;
+
+        /// <summary>
+        /// singleton class
+        /// </summary>
         public static CommandClient Instance
         {
             get
@@ -36,6 +41,7 @@ namespace FlightSimulator.Model
 
         public void Send(string command)
         {
+            //write data to the socket and flush it
             if(client!= null) {
                 StreamWriter writer = new StreamWriter(client.GetStream());
                 writer.WriteLine(command);

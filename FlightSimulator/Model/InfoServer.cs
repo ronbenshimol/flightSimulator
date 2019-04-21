@@ -32,6 +32,9 @@ namespace FlightSimulator.Model
         }
 
         private static InfoServer instance = null;
+        /// <summary>
+        /// singleton class
+        /// </summary>
         public static InfoServer Instance
         {
             get
@@ -45,21 +48,24 @@ namespace FlightSimulator.Model
 
         public void Start()
         {
+
             int listenPort = ApplicationSettingsModel.Instance.FlightInfoPort;
             string serverIp = "0.0.0.0";
             IPAddress localAdd = IPAddress.Parse(serverIp);
 
+            //start listener
             listener = new TcpListener(localAdd, listenPort);
             listener.Start();
-
+            //listen to connection
             client = listener.AcceptTcpClient();
-
             isAlive = true;
 
+            //start thread of server
             serverLitenerThread = new Thread(() =>
             {
                 try
                 {
+                    //getting socket stream and read lines
                     using (StreamReader reader = new StreamReader(client.GetStream(), Encoding.UTF8))
                     {
                         lock (_syncLock)
@@ -68,9 +74,9 @@ namespace FlightSimulator.Model
                             string line;
                             while (isAlive && (line = reader.ReadLine()) != null)
                             {
+
                                 string[] valuesStr = line.Split(',');
-                                if(valuesStr.Length > 23)
-                                    
+                                
                                 Lon = float.Parse(valuesStr[0]);
                                 Lat = float.Parse(valuesStr[1]);
 
@@ -86,12 +92,14 @@ namespace FlightSimulator.Model
 
             });
 
+            //start the thread of the server
             serverLitenerThread.Start();
 
         }
 
         public void Close()
         {
+            //close sourcess
             lock (_syncLock2)
             {
                 client?.Close();
