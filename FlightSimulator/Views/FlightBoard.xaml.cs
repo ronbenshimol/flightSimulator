@@ -55,6 +55,7 @@ namespace FlightSimulator.Views
         {
             if(e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
             {
+                Console.WriteLine("Lon: " + infoServer.Lon +" ,Lat: " + infoServer.Lat);
                 Point p1 = new Point(infoServer.Lon, infoServer.Lat);            // Fill here!
                 planeLocations.AppendAsync(Application.Current.Dispatcher, p1);
             }
