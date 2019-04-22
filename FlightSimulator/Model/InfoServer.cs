@@ -27,6 +27,8 @@ namespace FlightSimulator.Model
         private float lon;
         public float Lon { get { return lon; } set { lon = value; NotifyPropertyChanged("Lon"); } }
 
+        public Action<float,float> lonLatChanged;
+
         private InfoServer()
         {
         }
@@ -56,9 +58,14 @@ namespace FlightSimulator.Model
             //start listener
             listener = new TcpListener(localAdd, listenPort);
             listener.Start();
+
+            Console.WriteLine("listening...");
+
             //listen to connection
             client = listener.AcceptTcpClient();
             isAlive = true;
+
+            Console.WriteLine("flightgear connected.");
 
             //start thread of server
             serverLitenerThread = new Thread(() =>
@@ -79,6 +86,10 @@ namespace FlightSimulator.Model
                                 
                                 Lon = float.Parse(valuesStr[0]);
                                 Lat = float.Parse(valuesStr[1]);
+
+                                Console.WriteLine("lon:" + Lon +" ,lat:" + Lat);
+
+                                lonLatChanged?.Invoke(Lon, Lat);
 
                                 reader.DiscardBufferedData();
                             }
