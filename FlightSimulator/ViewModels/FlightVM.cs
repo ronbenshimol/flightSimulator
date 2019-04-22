@@ -10,12 +10,12 @@ using System.Windows.Input;
 
 namespace FlightSimulator.ViewModels
 {
+    /// <summary>
+    /// flight view model
+    /// </summary>
     class FlightVM
     {
-
-        private bool isDisconnected = true;
-        private ConnectModel connectM = new ConnectModel();
-
+        // connect command
         private ICommand _connectCommand;
         public ICommand ConnectCommand
         {
@@ -27,7 +27,7 @@ namespace FlightSimulator.ViewModels
         }
         private void OnConnectClick()
         {
-            isDisconnected = false;
+            
 
              new Thread(() =>
             {
@@ -41,7 +41,7 @@ namespace FlightSimulator.ViewModels
             
         }
 
-
+        // settings button
         private ICommand _settingsCommand;
         public ICommand SettingsCommand
         {

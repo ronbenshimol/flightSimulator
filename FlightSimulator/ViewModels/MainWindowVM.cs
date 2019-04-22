@@ -14,7 +14,7 @@ namespace FlightSimulator.ViewModels
 
         public MainWindowVM()
         {
-            // TODO open tcp connection
+            
         }
 
         

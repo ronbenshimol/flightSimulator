@@ -12,41 +12,26 @@ using System.Windows.Media;
 
 namespace FlightSimulator.ViewModels
 {
-    class AutoPilotVM : BaseNotify
+    
+    /// <summary>
+    /// VM for auto pilot
+    /// </summary>
+    class AutoPilotVM
     {
+
+        public AutoPilotModel autoPilotModel { get; set; }
+
         public AutoPilotVM()
         {
-            Back = Brushes.White;
+            // init color is white
+            autoPilotModel = new AutoPilotModel();
+            autoPilotModel.Back = Brushes.White;
+            //Back = Brushes.White;
         }
+        // added str since last OK click
         private String addedStr;
+        // prev str to find the added
         private String prevStr = "";
-
-        private String autoPilotStr;
-        public String AutoPilotStr
-        {
-            get
-            {
-                return this.autoPilotStr;
-            }
-            set
-            {
-                this.autoPilotStr = value;
-                if (value.CompareTo("") != 0)
-                    Back = Brushes.LightPink;
-                NotifyPropertyChanged(AutoPilotStr);
-            }
-        }
-
-        private Brush _b;
-        public Brush Back
-        {
-            get { return _b; }
-            set { _b = value; NotifyPropertyChanged("Back"); }
-        }
-
-
-
-
 
         private ICommand _okCommand;
         public ICommand OKCommand
@@ -61,8 +46,8 @@ namespace FlightSimulator.ViewModels
         {
             new Thread(() =>
             {
-                Back = Brushes.White;
-                addedStr = removePrefix(AutoPilotStr, prevStr);
+                autoPilotModel.Back = Brushes.White;
+                addedStr = removePrefix(autoPilotModel.AutoPilotStr, prevStr);
                 IEnumerable<string> commands = addedStr.Split('\n').Select(command => command.Trim())
                     .Where(command => command.Count() > 0);
                 
@@ -74,7 +59,7 @@ namespace FlightSimulator.ViewModels
                 }
                 addedStr = "";
                 
-                prevStr = AutoPilotStr;
+                prevStr = autoPilotModel.AutoPilotStr;
             }).Start();
         }
         private String removePrefix(String str, String prefix)
@@ -98,7 +83,7 @@ namespace FlightSimulator.ViewModels
         }
         private void OnClearClick()
         {
-            this.AutoPilotStr = "";
+            autoPilotModel.AutoPilotStr = "";
             this.prevStr = "";
             
         }
